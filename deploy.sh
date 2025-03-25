@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Aller dans le répertoire du projet
-cd ~/app
+cd ~/app/traefik-load-balancer
 
 # Mettre à jour le dépôt
 git pull origin main
