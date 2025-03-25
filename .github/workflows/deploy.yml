@@ -24,4 +24,4 @@ jobs:
             cd ${{ secrets.EC2_PATH }}
             git pull origin main
             chmod +x deploy.sh
-            ./deploy.sh
+            deploy.sh
