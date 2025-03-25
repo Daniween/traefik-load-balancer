@@ -19,9 +19,9 @@ services:
     build: ./app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.react.rule=Host(`localhost`)"
-      - "traefik.http.routers.react.entrypoints=web"
-      - "traefik.http.services.react.loadbalancer.server.port=80"
+      - "traefik.http.routers.react-blue.rule=Host(`localhost`)"
+      - "traefik.http.routers.react-blue.entrypoints=web"
+      - "traefik.http.services.react-blue.loadbalancer.server.port=80"
     restart: unless-stopped
 
 
