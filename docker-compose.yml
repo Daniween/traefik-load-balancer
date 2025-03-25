@@ -21,6 +21,7 @@ services:
     restart: unless-stopped
 
   react-blue:
+    container_name: react-blue
     build: ./app
     labels:
       - "traefik.enable=true"
@@ -31,6 +32,7 @@ services:
     restart: unless-stopped
 
   react-green:
+    container_name: react-green
     build: ./app
     labels:
       - "traefik.enable=true"
