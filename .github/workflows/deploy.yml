@@ -22,6 +22,5 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ${{ secrets.EC2_PATH }}
-            git pull origin main
             chmod +x deploy.sh
             ./deploy.sh

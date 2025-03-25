@@ -24,9 +24,9 @@ services:
     build: ./app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.react-blue.rule=Host(`votre-domaine.com`)"
-      - "traefik.http.routers.react-blue.entrypoints=websecure"
-      - "traefik.http.routers.react-blue.tls.certresolver=leresolver"
+      - "traefik.http.routers.react.rule=Host(`votre-domaine.com`)"
+      - "traefik.http.routers.react.entrypoints=websecure"
+      - "traefik.http.routers.react.tls.certresolver=leresolver"
       - "traefik.http.services.react-blue.loadbalancer.server.port=80"
     restart: unless-stopped
 
@@ -34,8 +34,5 @@ services:
     build: ./app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.react-green.rule=Host(`votre-domaine.com`) && PathPrefix(`/green`)"
-      - "traefik.http.routers.react-green.entrypoints=websecure"
-      - "traefik.http.routers.react-green.tls.certresolver=leresolver"
       - "traefik.http.services.react-green.loadbalancer.server.port=80"
     restart: unless-stopped
