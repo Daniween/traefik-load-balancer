@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Aller dans le répertoire du projet
+cd ~/app
+
+# Mettre à jour le dépôt
+git pull origin main
+
 # Arrêter et supprimer l'ancien container inactif
 INACTIVE_CONTAINER=$(docker ps -f name=react-green -q)
 if [ -z "$INACTIVE_CONTAINER" ]; then
@@ -13,3 +19,6 @@ fi
 
 # Reconstruire et démarrer le nouveau container
 docker-compose up -d --build react-blue react-green
+
+# Nettoyer les images Docker inutilisées
+docker image prune -f
