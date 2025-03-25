@@ -7,17 +7,11 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.leresolver.acme.httpchallenge=true"
-      - "--certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.leresolver.acme.email=votre-email@example.com"
-      - "--certificatesresolvers.leresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./letsencrypt:/letsencrypt"
     restart: unless-stopped
 
   react-blue:
@@ -25,11 +19,11 @@ services:
     build: ./app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.react.rule=Host(`votre-domaine.com`)"
-      - "traefik.http.routers.react.entrypoints=websecure"
-      - "traefik.http.routers.react.tls.certresolver=leresolver"
-      - "traefik.http.services.react-blue.loadbalancer.server.port=80"
+      - "traefik.http.routers.react.rule=Host(`localhost`)"
+      - "traefik.http.routers.react.entrypoints=web"
+      - "traefik.http.services.react.loadbalancer.server.port=80"
     restart: unless-stopped
+
 
   react-green:
     container_name: react-green
